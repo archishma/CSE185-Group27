@@ -8,5 +8,5 @@ BWDtools finds all variants in a sample VCF file and create a list of all the sa
 ## How To Run
 python bwdtools.py <input_file>
 
-> bwdtools.py     the main file to execute for processing and indexing the input file
-> <input_file>    vcf file
+bwdtools.py |the main file to execute for processing and indexing the input file
+<input_file>    |vcf file
