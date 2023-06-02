@@ -24,6 +24,7 @@ In order to utilize BWDTools, please use run the following command in your termi
 
 ## Usage/Options
 `python bwdtools.py stats <input_file> | -qid <allele_position> `
+
 There is the option to have the overall stats summary of the entire file, only look at a certain allele position, or a range of positions.
 
 Component | Definition 
