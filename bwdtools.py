@@ -2,11 +2,21 @@
 ### Archishma Kavalipati, Allexa Remigio, Iris Lee 
 ### CSE 185 Spring 2023 
 
-import sys # for taking in command-line arguments eventually 
+import argparse # for taking in command-line arguments 
+import sys # for working with command-line arguments 
 import gzip # for working with gzipped data, as most VCF files are in the format *.vcf.gz
 
+parser = argparse.ArgumentParser(prog ='BWDTools')
+
+parser.add_argument('vcf', help='Path to VCF file to be processed.')
+parser.add_argument('-v', '--num-variants', action='store_true', help='List the number of variants in the VCF file.')
+parser.add_argument('-s', '--list-samples', action='store_true', help='List the samples in the VCF file.')
+
+args = parser.parse_args()
+
 def process_input(infile):
-    '''Takes in a VCF file and processes the input. This is the first step run before any BWDTools operations are run. '''
+    '''Takes in a VCF file and processes the input. 
+    This is the first step run before any BWDTools operations are run. '''
     fileformat = ''
     source = '' 
     header = []
@@ -38,3 +48,17 @@ def list_samples(header):
         if i != len(header[9:]) - 1: # fix later 
             samples += '\n'
     return samples
+
+### MAIN METHODS
+if __name__ == '__main__':
+    if len(sys.argv) == 2: # no optional arguments were provided 
+        sys.exit('Error: no options provided! Use -h or --help for usage.')
+    # Process the input 
+    infile = args.vcf
+    variant_lines, header, fileformat, source = process_input(infile)
+    if args.num_variants:
+        print(num_variants(variant_lines))
+    if args.list_samples:
+        print(list_samples(header))
+    else:
+        pass
