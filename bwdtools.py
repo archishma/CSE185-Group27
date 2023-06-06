@@ -11,6 +11,7 @@ parser = argparse.ArgumentParser(prog ='BWDTools')
 parser.add_argument('vcf', help='Path to VCF file to be processed.')
 parser.add_argument('-v', '--num-variants', action='store_true', help='List the number of variants in the VCF file.')
 parser.add_argument('-s', '--list-samples', action='store_true', help='List the samples in the VCF file.')
+# TODO - add command line option for extracting specific variants based on position (see `by_pos()`)
 
 args = parser.parse_args()
 
@@ -49,6 +50,20 @@ def list_samples(header):
             samples += '\n'
     return samples
 
+def by_pos(positions, variant_lines):
+    variants = []
+    if '-' in positions:
+        start, end = int(positions.split('-')[0]), (positions.split('-')[1])
+        for line in variant_lines:
+            if int(line[1]) >= start and int(line[1]) <= end:
+                variants.append(line)
+    else:
+        pos = int(positions)
+        for line in variant_lines:
+            if int(line[1]) == pos:
+                variants.append(line)
+    return variants 
+        
 ### MAIN METHODS
 if __name__ == '__main__':
     if len(sys.argv) == 2: # no optional arguments were provided 
