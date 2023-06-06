@@ -1,0 +1,12 @@
+README.md
+setup.py
+BWDTools.egg-info/PKG-INFO
+BWDTools.egg-info/SOURCES.txt
+BWDTools.egg-info/dependency_links.txt
+BWDTools.egg-info/top_level.txt
+bwdtools.egg-info/PKG-INFO
+bwdtools.egg-info/SOURCES.txt
+bwdtools.egg-info/dependency_links.txt
+bwdtools.egg-info/top_level.txt
+bwdtools_package/bwdtools.py
+bwdtools_package/test.py
