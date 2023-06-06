@@ -19,7 +19,7 @@ In order to utilize BWDTools, please use run the following command in your termi
 `pip install bwdtools`
 
 ## Usage/Options
-`python bwdtools.py <input_file>  -v | -s | -qid <allele_position> `
+`python bwdtools.py <input_file>  -s | -v ( -qid <allele_position> ) `
 
 There is the option to have the overall stats summary of the entire file, only look at a certain allele position, or a range of positions.
 
@@ -27,9 +27,9 @@ Component | Definition
  ------------ | ------------- 
 bwdtools.py | the main file to execute for processing and indexing the input file
 <input_file>  | input vcf file
--v  | option to print the overall stats summary
 -s  | option to print the sample list
--qid  | option to select a specific allele position
+-v  | option to print the overall stats summary
+-qid  | option to select a specific allele position/interval (functions only with -v option)
 <allele_position>  | Position/Range of allele (i.e. 128419307 or 128419307-128421762)
 <!--stats  | to output summary of stats (frequency of unique IDs and alleles)  i took this out for now-->
 
