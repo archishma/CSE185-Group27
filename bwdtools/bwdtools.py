@@ -106,6 +106,7 @@ if __name__ == '__main__':
             print(f'Number of Variants from {args.qid}: ', num_variants(qid_variant_lines))
         if args.stats:
             print(f"Stats for {args.vcf} between {args.qid}:")
+            print('List of Samples: ',list_samples(header))
             print(f'Number of Variants: ', num_variants(qid_variant_lines))
             print('Unique ID frequency: ', unique_id_freq(qid_variant_lines))
             alleles = unique_allele_freq(qid_variant_lines)
