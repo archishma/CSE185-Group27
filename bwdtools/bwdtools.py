@@ -9,6 +9,7 @@ import gzip # for working with gzipped data, as most VCF files are in the format
 parser = argparse.ArgumentParser(prog ='BWDTools')
 
 parser.add_argument('vcf', help='Path to VCF file to be processed.')
+parser.add_argument('stats', nargs='?', const=True, default=False, help='Flag to indicate whether to show summary of basic stats.')
 parser.add_argument('-v', '--num-variants', action='store_true', help='List the number of variants in the VCF file.')
 parser.add_argument('-s', '--list-samples', action='store_true', help='List the samples in the VCF file.')
 # making qid argument group mutually exclusive from other arguments
@@ -59,13 +60,35 @@ def by_pos(positions, variant_lines):
         for line in variant_lines:
             if int(line[1]) >= start and int(line[1]) <= end:
                 variants.append(line)
-    
     else:
         pos = int(positions)
         for line in variant_lines:
             if int(line[1]) == pos:
                 variants.append(line)
-    return variants 
+    return variants
+
+def unique_id_freq(variant_lines):
+    id_counts = {}
+    
+    for line in variant_lines:
+        idCol = line[2]  # IDs = third column
+        ids = idCol.split(';')
+        
+        for id in ids:
+            id_counts[id] = id_counts.get(id, 0) + 1
+    
+    return id_counts
+
+def unique_allele_freq(variant_lines):
+    allAlleles = {}
+    
+    for line in variant_lines:
+        alleles = line[4].split(',')  # Alleles = fifth column
+        
+    for allele in alleles:
+        allAlleles[allele] = allAlleles.get(allele, 0) + 1
+    
+    return allAlleles
 
 ### MAIN METHODS
 if __name__ == '__main__':
@@ -76,14 +99,31 @@ if __name__ == '__main__':
     # Process the input 
     infile = args.vcf
     variant_lines, header, fileformat, source = process_input(infile)
+    #qid option
     if args.qid:
         qid_variant_lines = by_pos(args.qid, variant_lines)
         if args.num_variants:
-            print(num_variants(qid_variant_lines))
+            print(f'Number of Variants from {args.qid}: ', num_variants(qid_variant_lines))
+        if args.stats:
+            print(f"Stats for {args.vcf} between {args.qid}:")
+            print(f'Number of Variants: ', num_variants(qid_variant_lines))
+            print('Unique ID frequency: ', unique_id_freq(qid_variant_lines))
+            alleles = unique_allele_freq(qid_variant_lines)
+            print('Unique Alleles and frequencies:\n', )
+            for allele, count in alleles.items():
+                print(f'Allele: {allele}, Frequency: {count}')
     else:
         if args.num_variants:
-            print(num_variants(variant_lines))
+            print('Number of All Variants: ',num_variants(variant_lines))
+        if args.stats:
+            print(f"Stats for {args.vcf}:")
+            print(f'Number of Variants : ', num_variants(variant_lines))
+            print('Unique ID frequency: ', unique_id_freq(variant_lines))
+            alleles = unique_allele_freq(variant_lines)
+            print('Unique Alleles and frequencies:\n', )
+            for allele, count in alleles.items():
+                print(f'Allele: {allele}, Frequency: {count}')
     if args.list_samples:
-        print(list_samples(header))
+        print('List of All Samples: ',list_samples(header))
     else:
         pass
