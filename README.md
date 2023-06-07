@@ -36,13 +36,14 @@ stats  | to output simple summary of stats (frequency of unique IDs, alleles, nu
 Options `stats` and `v` can *optionally* be utilized over a certain allele position or interval.
 
 
-## Sample Code
+## Sample Commands
 Using the sample file "trio.vcf.gz" from the "vcf" directory, we can print a list of its samples using the `-s` option:
 ```
 python bwdtools.py ~/vcf/trio.vcf/gz -s
 ```
 Output:
 ```
+List of All Samples:
 Sample 1
 Sample 2
 Sample 3
@@ -53,5 +54,17 @@ python bwdtools.py ~/vcf/trio.vcf.gz -v
 ```
 Output:
 ```
-50
+Number of all Variants: 50
+```
+To output a simple summary of the VCF file, we can use the `stats` option:
+```
+python bwdtools.py ~vcf/trio.vcf/gz stats
+```
+Output:
+```
+Number of Variants :  50
+Unique ID frequency:  {'.': 50}
+Unique Alleles and frequencies:
+
+Allele: C, Frequency: 1
 ```
