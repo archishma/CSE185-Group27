@@ -109,7 +109,7 @@ if __name__ == '__main__':
             print(f'Number of Variants: ', num_variants(qid_variant_lines))
             print('Unique ID frequency: ', unique_id_freq(qid_variant_lines))
             alleles = unique_allele_freq(qid_variant_lines)
-            print('Unique Alleles and frequencies:\n', )
+            print('Unique Alleles and frequencies:', )
             for allele, count in alleles.items():
                 print(f'Allele: {allele}, Frequency: {count}')
     else:
