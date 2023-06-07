@@ -125,6 +125,6 @@ if __name__ == '__main__':
             for allele, count in alleles.items():
                 print(f'Allele: {allele}, Frequency: {count}')
     if args.list_samples:
-        print('List of All Samples: ',list_samples(header))
+        print('List of All Samples:\n',list_samples(header))
     else:
         pass
