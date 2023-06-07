@@ -71,6 +71,8 @@ def by_pos(positions, variant_lines):
 if __name__ == '__main__':
     if len(sys.argv) == 2: # no optional arguments were provided 
         sys.exit('Error: no options provided! Use -h or --help for usage.')
+    if "vcf.gz" not in args.vcf:
+        sys.exit('Error: incorrect vcf input provided! Usage supports vcf.gz files.')
     # Process the input 
     infile = args.vcf
     variant_lines, header, fileformat, source = process_input(infile)
