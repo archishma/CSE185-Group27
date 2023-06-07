@@ -11,7 +11,7 @@ CSE 185 SP23 Project Creator: Melissa Gymrek
 Completed
 
 ## Description
-Compared to the BCFtools options "index" and "query", BWDtools locates all the variants in a sample VCF file, then generates a list of all the samples. This tool can be implemented on the entire sample or from specific regions of the input file, similar to the BFCtools "-r" flag options, and outputs to the local terminal.
+Compared to the BCFtools options "index" and "query", BWDTools locates all the variants in a sample VCF file, then generates a list of all the samples. This tool can be implemented on the entire sample or from specific regions of the input file, similar to the BFCtools "-r" flag options, and outputs to the local terminal.
 
 ## Installation
 In order to utilize BWDTools, please use run the following command in your terminal to install the `bwdtools` program:
