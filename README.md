@@ -26,7 +26,7 @@ There is the option to have the overall stats summary of the entire file, only l
 Component | Definition 
  ------------ | ------------- 
 bwdtools.py | the main file to execute for processing and indexing the input file
-<input_file>  | input vcf file
+<input_file>  | input vcf file (must already be indexed and in format **.vcf.gz*)
 -s  | option to print the sample list
 -v  | option to print the number of variants
 -qid  | option to select a specific allele position/interval (functions only with -v option)
