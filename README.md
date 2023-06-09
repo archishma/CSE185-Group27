@@ -28,8 +28,8 @@ Component | Definition
 bwdtools.py | the main file to execute for processing and indexing the input file
 <input_file>  | input vcf file (must already be indexed and in format **.vcf.gz*)
 stats  | to output simple summary of stats (frequency of unique IDs, alleles, number of variants, and list) 
--s  | option to print the sample list
--v  | option to print the number of variants
+-samples  | option to print the sample list
+-variants  | option to print the number of variants
 -qid  | option to select a specific allele position/interval (functions only with -v option)
 <allele_position>  | Position/Range of allele (i.e. 128419307 or 128419307-128421762)
 
