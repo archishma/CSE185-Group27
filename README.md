@@ -37,9 +37,9 @@ Options `stats` and `v` can *optionally* be utilized over a certain allele posit
 
 
 ## Sample Commands
-Using the sample file "trio.vcf.gz" from the "vcf" directory, we can print a list of its samples using the `-s` option:
+Using the sample file "trio.vcf.gz" from the "vcf" directory, we can print a list of its samples using the `-samples` option:
 ```
-python bwdtools.py ~/vcf/trio.vcf/gz -s
+python bwdtools.py ~/vcf/trio.vcf/gz -samples
 ```
 Output:
 ```
@@ -48,9 +48,9 @@ Sample 1
 Sample 2
 Sample 3
 ```
-We can also use the `-v` option to print the number of variants in the same VCF file:
+We can also use the `-variants` option to print the number of variants in the same VCF file:
 ```
-python bwdtools.py ~/vcf/trio.vcf.gz -v
+python bwdtools.py ~/vcf/trio.vcf.gz -variants
 ```
 Output:
 ```
