@@ -10,8 +10,8 @@ parser = argparse.ArgumentParser(prog ='BWDTools')
 
 parser.add_argument('vcf', help='Path to VCF file to be processed.')
 parser.add_argument('stats', nargs='?', const=True, default=False, help='Flag to indicate whether to show summary of basic stats.')
-parser.add_argument('-v', '--num-variants', action='store_true', help='List the number of variants in the VCF file.')
-parser.add_argument('-s', '--list-samples', action='store_true', help='List the samples in the VCF file.')
+parser.add_argument('-variants', '--num-variants', action='store_true', help='List the number of variants in the VCF file.')
+parser.add_argument('-samples', '--list-samples', action='store_true', help='List the samples in the VCF file.')
 # making qid argument group mutually exclusive from other arguments
 mu = parser.add_mutually_exclusive_group(required=False)
 mu.add_argument('-qid', type=str, help='List the position or range of allele') #see 'by_pos() --> args.qid = positions'
